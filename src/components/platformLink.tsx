@@ -14,5 +14,5 @@ export default ({ children, to, platform }: Props): JSX.Element => {
   let path = currentPlatform ? currentPlatform.url : `/platform-redirect/`;
   if (to)
     path += currentPlatform ? to.slice(1) : `?next=${encodeURIComponent(to)}`;
-  return <SmartLink to={path}>{children}</SmartLink>;
+  return <SmartLink to={path}>{children || (!to ? currentPlatform.title : null)}</SmartLink>;
 };
