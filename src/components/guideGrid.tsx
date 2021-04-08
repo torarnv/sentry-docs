@@ -1,7 +1,7 @@
 import React from "react";
 import { PlatformIcon } from "platformicons";
 
-import SmartLink from "./smartLink";
+import PlatformLink from "./platformLink";
 import usePlatform, { Platform } from "./hooks/usePlatform";
 
 type Props = {
@@ -20,15 +20,9 @@ export default ({ platform, className }: Props): JSX.Element => {
     <ul className={className}>
       {(currentPlatform as Platform).guides.map(guide => (
         <li key={guide.key}>
-          <SmartLink to={guide.url}>
-            <PlatformIcon
-              size={16}
-              platform={guide.key}
-              style={{ marginRight: "0.5rem" }}
-              format="lg"
-            />
+          <PlatformLink platform={guide.key} to={guide.url} icon={true}>
             <h4 style={{ display: "inline-block" }}>{guide.title}</h4>
-          </SmartLink>
+          </PlatformLink>
         </li>
       ))}
     </ul>
